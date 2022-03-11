@@ -10,7 +10,7 @@ import Products from './pages/Products';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
-
+import Home from './pages/Home';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -29,7 +29,7 @@ export default function Router() {
       path: '/',
       element: <LogoOnlyLayout />,
       children: [
-        { path: '/', element: <Navigate to="/dashboard/app" /> },
+        { path: '/', element: <Home /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
