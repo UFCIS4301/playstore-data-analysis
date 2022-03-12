@@ -40,8 +40,14 @@ export default function Home() {
               Query below on data for Google Play Store
             </Typography>
             <div style={{ gap: '15px', display: 'flex', marginTop: '15px' }}>
-              {queries.map((query) => (
-                <Button to={query.url} size="large" variant="contained" component={RouterLink}>
+              {queries.map((query, index) => (
+                <Button
+                  to={query.url}
+                  size="large"
+                  variant="contained"
+                  component={RouterLink}
+                  key={index}
+                >
                   {query.title}
                 </Button>
               ))}
