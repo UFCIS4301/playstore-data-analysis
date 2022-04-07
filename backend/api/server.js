@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/q2', async function(req, res) {
+app.get('/api/appversion', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
 	try {
@@ -37,7 +37,7 @@ app.get('/api/q2', async function(req, res) {
 	}
 });
 
-app.get('/api/q5', async function(req, res) {
+app.get('/api/category', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
 	try {
@@ -60,7 +60,7 @@ app.get('/api/q5', async function(req, res) {
 	}
 });
 
-app.get('/api/q4', async function(req, res) {
+app.get('/api/demographic', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
 	try {

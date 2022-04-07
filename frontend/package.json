@@ -61,6 +61,7 @@
     "react-scripts": "^5.0.0",
     "simplebar": "^5.3.6",
     "simplebar-react": "^2.3.6",
+    "swr": "^1.2.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
@@ -79,5 +80,6 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1"
-  }
+  },
+  "proxy":"http://localhost:5000/api"
 }

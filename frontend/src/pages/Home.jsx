@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 // material
+import useSwr from 'swr';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Typography, Container } from '@mui/material';
 // components
@@ -26,6 +27,9 @@ const RootStyle = styled(Page)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Home() {
+  const { data, error } = useSwr('api/q4');
+  fetch('/api/q5').then(res => res.json()).then(console.log);
+  console.log(data, error);
   return (
     <RootStyle title="Home">
       <Container>
