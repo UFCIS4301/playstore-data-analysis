@@ -5,14 +5,14 @@ const config = {
 	connectString: 'oracle.cise.ufl.edu/orcl'
 };
 
-async function getEmployee(empId) {
+async function testConnection(empId) {
 	let conn;
 
 	try {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(Appdetails.ID), Released_YEar FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates WHERE Appdetails.ID = Dates.ID Group by Released_YEar Order by Released_Year desc',
+			'SELECT COUNT(*) FROM "SINHA.KSHITIJ".Appdetails',
 			{}
 		);
 
