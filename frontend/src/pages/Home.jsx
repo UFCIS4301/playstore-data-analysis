@@ -27,8 +27,6 @@ const RootStyle = styled(Page)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Home() {
-  const { data, error } = useSwr('api/q4');
-  fetch('/api/q5').then(res => res.json()).then(console.log);
   console.log(data, error);
   return (
     <RootStyle title="Home">
