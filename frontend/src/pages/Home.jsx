@@ -1,3 +1,4 @@
+import { Translate } from '@mui/icons-material';
 import { Box, Button, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
@@ -8,11 +9,11 @@ import Page from '../components/Page';
 
 // ----------------------------------------------------------------------
 const queries = [
-  { title: 'Overall', url: '/overall' },
-  { title: 'Category', url: '/category' },
+  { title: 'Size vs Number', url: '/overall' },
+  { title: 'Min. Android Version', url: '/category' },
   { title: 'Demographic', url: '/demographic' },
-  { title: 'App version', url: '/appversion' },
-  { title: 'Price', url: '/price' }
+  { title: 'Paid Vs Free', url: '/appversion' },
+  { title: 'Category Wise', url: '/price' }
 ];
 const RootStyle = styled(Page)(({ theme }) => ({
   display: 'flex',
@@ -27,22 +28,22 @@ const RootStyle = styled(Page)(({ theme }) => ({
 export default function Home() {
   return (
     <RootStyle title="Home">
-      <Container>
+      <Container align="center">
         <MotionContainer initial="initial" open>
-          <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
+          <Box sx={{  margin: 'auto', textAlign: 'center'  }}>
             <motion.div variants={varBounceIn}>
               <Typography variant="h1" paragraph>
-                Home page
+                Google PlayStore Trend Analysis
               </Typography>
             </motion.div>
             <Typography sx={{ color: 'text.secondary' }}>
               Query below on data for Google Play Store
             </Typography>
-            <div style={{ gap: '15px', display: 'flex', marginTop: '15px' }}>
+            <div className="queries" style={{ gap: '15px', display: 'flex', marginTop: '30px',transform:'translate(-50%,-50%)',marginLeft:'50%'}}>
               {queries.map((query, index) => (
                 <Button
                   to={query.url}
-                  size="large"
+                  size='large'
                   variant="contained"
                   component={RouterLink}
                   key={index}
