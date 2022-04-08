@@ -1,9 +1,7 @@
+import { Box, Button, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
-// material
-import useSwr from 'swr';
-import { styled } from '@mui/material/styles';
-import { Box, Button, Typography, Container } from '@mui/material';
 // components
 import { MotionContainer, varBounceIn } from '../components/animate';
 import Page from '../components/Page';
@@ -27,7 +25,6 @@ const RootStyle = styled(Page)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Home() {
-  console.log(data, error);
   return (
     <RootStyle title="Home">
       <Container>

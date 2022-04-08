@@ -1,20 +1,18 @@
-// material
-import { Box, Grid, Container, Typography } from '@mui/material';
-// components
+import { Box, Container, Grid, Typography } from '@mui/material';
 import Page from '../components/Page';
 import {
-  AppTasks,
-  AppNewUsers,
   AppBugReports,
+  AppConversionRates,
+  AppCurrentSubject,
+  AppCurrentVisits,
   AppItemOrders,
   AppNewsUpdate,
-  AppWeeklySales,
+  AppNewUsers,
   AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
+  AppTasks,
   AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates
+  AppWebsiteVisits,
+  AppWeeklySales
 } from '../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------

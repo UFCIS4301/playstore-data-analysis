@@ -2,15 +2,15 @@ import { Animation, Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
   BarSeries,
-  Legend,
   Chart,
+  Legend,
   Title,
   ValueAxis
 } from '@devexpress/dx-react-chart-material-ui';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import useSWR from 'swr';
 import * as React from 'react';
+import useSWR from 'swr';
 // import { confidence as data } from "../../../demo-data/data-vizualization";
 import { energyConsumption as data2 } from '../demo-data/data-vizualization';
 import './Overall.css';

@@ -1,13 +1,13 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Card, Container, Link, Stack, Typography } from '@mui/material';
 // material
 import { styled } from '@mui/material/styles';
-import { Card, Stack, Link, Container, Typography } from '@mui/material';
-// layouts
-import AuthLayout from '../layouts/AuthLayout';
+import { Link as RouterLink } from 'react-router-dom';
 // components
 import Page from '../components/Page';
-import { LoginForm } from '../sections/authentication/login';
+// layouts
+import AuthLayout from '../layouts/AuthLayout';
 import AuthSocial from '../sections/authentication/AuthSocial';
+import { LoginForm } from '../sections/authentication/login';
 
 // ----------------------------------------------------------------------
 

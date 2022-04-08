@@ -1,31 +1,28 @@
-import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
-import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-// material
 import {
-  Card,
-  Table,
-  Stack,
   Avatar,
   Button,
+  Card,
   Checkbox,
-  TableRow,
+  Container,
+  Stack,
+  Table,
   TableBody,
   TableCell,
-  Container,
-  Typography,
   TableContainer,
-  TablePagination
+  TablePagination,
+  TableRow,
+  Typography
 } from '@mui/material';
-// components
-import Page from '../components/Page';
-import Label from '../components/Label';
-import Scrollbar from '../components/Scrollbar';
+import { sentenceCase } from 'change-case';
+import { filter } from 'lodash';
+import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Iconify from '../components/Iconify';
+import Label from '../components/Label';
+import Page from '../components/Page';
+import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
-//
 import USERLIST from '../_mocks_/user';
 
 // ----------------------------------------------------------------------

@@ -1,14 +1,9 @@
-// routes
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+import ScrollToTop from './components/ScrollToTop';
 import Router from './routes';
-// theme
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
-// components
-import ScrollToTop from './components/ScrollToTop';
-import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
-
-// ----------------------------------------------------------------------
 
 export default function App() {
   return (
