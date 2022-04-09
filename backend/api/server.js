@@ -21,7 +21,7 @@ app.get('/api/appversion', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(Applications.AppID), Min_Android, Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates,"SINHA.KSHITIJ".Applications	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID	Group BY Released_Year, Min_Android	Order by Released_YEar desc',
+			'SELECT COUNT(Applications.AppID) as COUNT, Min_Android, Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates,"SINHA.KSHITIJ".Applications	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID	Group BY Released_Year, Min_Android	Order by Released_YEar desc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
@@ -73,7 +73,7 @@ app.get('/api/demographic', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(Applications.AppID), Dates.Released_Year, Content_Rating.Rating FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications, "SINHA.KSHITIJ".Content_Rating	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.AppID = Content_Rating.AppID and Content_Rating.Rating IN (\'Teen\', \'Mature 17+\', \'Everyone 10+\')Group BY Dates.Released_Year, Content_Rating.Rating	Order by Dates.Released_YEar desc',
+			'SELECT COUNT(Applications.AppID) as COUNT, Dates.Released_Year, Content_Rating.Rating FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications, "SINHA.KSHITIJ".Content_Rating	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.AppID = Content_Rating.AppID and Content_Rating.Rating IN (\'Teen\', \'Mature 17+\', \'Everyone 10+\')Group BY Dates.Released_Year, Content_Rating.Rating	Order by Dates.Released_YEar desc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
@@ -126,7 +126,7 @@ app.get('/api/totalappcount', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(Appdetails.ID), Released_YEar FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates WHERE Appdetails.ID = Dates.ID Group by Released_YEar Order by Released_Year desc',
+			'SELECT COUNT(Appdetails.ID) COUNT, Released_YEar FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates WHERE Appdetails.ID = Dates.ID Group by Released_YEar Order by Released_Year desc',
 			//'select * from "SINHA.KSHITIJ".applications',
 			{},
 			{
@@ -153,7 +153,7 @@ app.get('/api/avgappsizevstotalcount', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(AppID), ROUND(AVG(Appsize)), Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications, "SINHA.KSHITIJ".Domain	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.DomainID = Domain.Domain_ID Group BY Released_Year	Order by Released_YEar desc',
+			'SELECT COUNT(AppID) COUNT, ROUND(AVG(Appsize)), Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications, "SINHA.KSHITIJ".Domain	Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.DomainID = Domain.Domain_ID Group BY Released_Year	Order by Released_YEar desc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
@@ -179,7 +179,7 @@ app.get('/api/avgprice', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(AppID), ROUND(AVG(Price)), Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\' Group BY Released_Year Order by Released_YEar desc',
+			'SELECT COUNT(AppID) COUNT, ROUND(AVG(Price)), Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\' Group BY Released_Year Order by Released_YEar desc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
