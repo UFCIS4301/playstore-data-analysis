@@ -8,6 +8,7 @@ import Demographic from './pages/Demographic';
 import Home from './pages/Home';
 //
 import Login from './pages/Login';
+import MinAppVersion from './pages/MinAppVersion';
 import Overall from './pages/Overall';
 import NotFound from './pages/Page404';
 import Products from './pages/Products';
@@ -33,6 +34,7 @@ export default function Router() {
       children: [
         { path: '/', element: <Home /> },
         { path: 'demographic', element: <Demographic /> },
+        { path: 'appversion', element: <MinAppVersion /> },
         { path: 'overall', element: <Overall /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },

@@ -45,7 +45,7 @@ export default function Demographic() {
 	const { data, error } = useSWR('/api/demographic');
 	const [ numAppData, setNumAppData ] = React.useState([]);
 	console.log(data, numAppData.length);
-	if (data && numAppData.length != 0) {
+	if (data && numAppData.length !== 0) {
 		setNumAppData(
 			data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
 		);

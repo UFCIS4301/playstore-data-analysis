@@ -10,7 +10,7 @@ import Page from '../components/Page';
 // ----------------------------------------------------------------------
 const queries = [
   { title: 'Size vs Number', url: '/overall' },
-  { title: 'Min. Android Version', url: '/category' },
+  { title: 'Min. Android Version', url: '/appversion' },
   { title: 'Demographic', url: '/demographic' },
   { title: 'Paid Vs Free', url: '/appversion' },
   { title: 'Category Wise', url: '/price' }
@@ -39,7 +39,7 @@ export default function Home() {
             <Typography sx={{ color: 'text.secondary' }}>
               Query below on data for Google Play Store
             </Typography>
-            <div className="queries" style={{ gap: '15px', display: 'flex', marginTop: '30px',transform:'translate(-50%,-50%)',marginLeft:'50%'}}>
+            <div className="queries" style={{ gap: '15px', display: 'flex', marginTop: '60px',transform:'translate(-50%,-50%)',marginLeft:'43%'}}>
               {queries.map((query, index) => (
                 <Button
                   to={query.url}
@@ -47,6 +47,7 @@ export default function Home() {
                   variant="contained"
                   component={RouterLink}
                   key={index}
+                  style={{minWidth: '137px'}}
                 >
                   {query.title}
                 </Button>
