@@ -17,6 +17,7 @@ import useSWR from 'swr';
 
 import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { avgSizeData as avgsizedata } from '../demo-data/avg-size';
+import AppLaunch from './AppLaunches';
 
 const PREFIX = 'Demo';
 
@@ -184,6 +185,8 @@ export default function SizeVsApp() {
         />
         <Animation />
       </StyledChart>
+
+      <AppLaunch/> 
     </Paper>
   );
 }
