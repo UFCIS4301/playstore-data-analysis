@@ -5,6 +5,7 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import Blog from './pages/Blog';
 import DashboardApp from './pages/DashboardApp';
 import Demographic from './pages/Demographic';
+import SizeVsApp from './pages/SizeVsApp';
 import Home from './pages/Home';
 //
 import Login from './pages/Login';
@@ -35,9 +36,9 @@ export default function Router() {
         { path: '/', element: <Home /> },
         { path: 'demographic', element: <Demographic /> },
         { path: 'appversion', element: <MinAppVersion /> },
-        { path: 'overall', element: <Overall /> },
+        { path: 'size-vs-app', element: <SizeVsApp /> },
         { path: 'login', element: <Login /> },
-        { path: 'register', element: <Register /> },
+        // { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> }
       ]

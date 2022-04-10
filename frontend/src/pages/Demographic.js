@@ -1,108 +1,8 @@
-// import { Animation, Stack } from '@devexpress/dx-react-chart';
-// import { ArgumentAxis, BarSeries, Chart, Legend, Title, ValueAxis } from '@devexpress/dx-react-chart-material-ui';
-// import Paper from '@mui/material/Paper';
-// import { styled } from '@mui/material/styles';
-// import * as React from 'react';
-import useSWR from 'swr';
-// // import { confidence as data } from "../../../demo-data/data-vizualization";
-// import { energyConsumption as data2 } from '../demo-data/data-vizualization';
-// import './Overall.css';
-
-// const PREFIX = 'Demo';
-
-// const classes = {
-// 	chart: `${PREFIX}-chart`
-// };
-
-// const format = () => (tick) => tick;
-
-// function Root(props) {
-// 	return <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />;
-// }
-// function Label(props) {
-// 	return <Legend.Label sx={{ pt: 1, whiteSpace: 'nowrap' }} {...props} />;
-// }
-// function Item(props) {
-// 	return <Legend.Item sx={{ flexDirection: 'column' }} {...props} />;
-// }
-
-// function ValueLabel(props) {
-// 	const { text } = props;
-// 	return <ValueAxis.Label {...props} text={`${text}%`} />;
-// }
-
-// function TitleText(props) {
-// 	return <Title.Text {...props} sx={{ whiteSpace: 'pre' }} />;
-// }
-
-// const StyledChart = styled(Chart)(() => ({
-// 	[`&.${classes.chart}`]: {
-// 		paddingRight: '20px'
-// 	}
-// }));
-
-// export default function Demographic() {
-// const { data, error } = useSWR('/api/demographic');
-// const [ numAppData, setNumAppData ] = React.useState([]);
-// console.log(data, numAppData.length);
-// if (data && numAppData.length !== 0) {
-// 	setNumAppData(
-// 		data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
-// 	);
-// }
-
-// 	return (
-// 		<div className="main">
-// 			<div className="Content">
-// 				<p>Amazing Fact about Dataset</p>
-// 				<p>Do you know that Google Store has.....</p>
-// 			</div>
-// 			<div className="chart1">
-// 				<Paper>
-// 					<Chart data={numAppData}>
-// 						<ArgumentAxis />
-// 						<ValueAxis max={8} />
-
-// 						<BarSeries valueField="num" argumentField="year" barWidth={300} />
-// 						<Title text="Number of Apps over the years" />
-// 						<Animation />
-// 					</Chart>
-// 				</Paper>
-// 			</div>
-// 			<div className="chart3">
-// 				<Paper>
-// 					<Chart data={data2}>
-// 						<ArgumentAxis />
-// 						<ValueAxis max={2400} />
-
-// 						<BarSeries name="Productivity" valueField="hydro" argumentField="size" />
-// 						<BarSeries name="Entertainment" valueField="oil" argumentField="size" />
-// 						<BarSeries name="Books" valueField="gas" argumentField="size" />
-// 						<BarSeries name="Game" valueField="coal" argumentField="size" />
-// 						<BarSeries name="Education" valueField="nuclear" argumentField="size" />
-// 						<Animation />
-// 						<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-// 						<Title text="Ratio of Paid and Free apps over the years" />
-// 						<Stack
-// 							stacks={[
-// 								{
-// 									series: [ 'Hydro-electric', 'Oil', 'Natural gas', 'Coal', 'Nuclear' ]
-// 								}
-// 							]}
-// 						/>
-// 					</Chart>
-// 				</Paper>
-// 			</div>
-// 		</div>
-// 	);
-// }
-
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import { Chart, ArgumentAxis, ValueAxis, BarSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { Stack, Animation } from '@devexpress/dx-react-chart';
 
-import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { demographicData as demographicdata } from '../demo-data/demographic';
 
 const Root = (props) => (
@@ -110,11 +10,8 @@ const Root = (props) => (
 );
 const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
 
-// if (data && numAppData.length !== 0) {
-// 	setNumAppData(
-// 		data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
-// 	);
-// }
+
+
 
 const m2009 = new Map();
 const m2010 = new Map();
@@ -167,12 +64,13 @@ demographicdata.rows.forEach((row) => {
 	} else if (row.RELEASED_YEAR === 2010) {
 		m2010.set(row.RATING, row.COUNT);
 		m2010.set('year', '2010');
-	} else if (row.RELEASED_YEAR === 2009) {
+	}else if (row.RELEASED_YEAR === 2009) {
 		m2010.set(row.RATING, row.COUNT);
 		m2010.set('year', '2009');
-	}
+	} 
 });
 
+console.log(m2021);
 const combinedVersdata = [
 	Object.fromEntries(m2009),
 	Object.fromEntries(m2010),
@@ -188,58 +86,26 @@ const combinedVersdata = [
 	Object.fromEntries(m2020),
 	Object.fromEntries(m2021)
 ];
-// function f(){
-// const { dataApi, error } = useSWR('/api/demographic');
-// const [ numAppData, setNumAppData ] = React.useState([]);
-// console.log(dataApi, numAppData.length);
-// }
+
 
 export default function Demographic() {
-	// const { dataApi, error } = useSWR('/api/demographic');
-	// const [ numAppData, setNumAppData ] = React.useState([]);
-	// console.log(dataApi, numAppData.length);
+	
+		return (
+			<Paper>
+				<Chart data={combinedVersdata}>
+					<ArgumentAxis />
+					<ValueAxis />
 
-	const response = fetch('http://localhost:5000/api/demographic');
-	console.log(response);
-
-	// constructor(props) {
-	// 	super(props);
-
-	// 	this.state = {
-	// 		combinedVersdata
-	// 	};
-	// }
-
-	// render() {
-	// const { combinedVersdata: chartData } = this.state;
-
-	// f();
-
-	return (
-		<Paper>
-			<Chart data={combinedVersdata}>
-				<ArgumentAxis />
-				<ValueAxis />
-
-				<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
-				<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
-				<BarSeries name="Teen" valueField="Teen" argumentField="year" />
-				{/* <BarSeries
-            name="Coal"
-            valueField="coal"
-            argumentField="country"
-          />
-          <BarSeries
-            name="Nuclear"
-            valueField="nuclear"
-            argumentField="country"
-          /> */}
-				<Animation />
-				<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-				<Title text="Demographic Trend of applications over the years" />
-				<Stack stacks={[ { series: [ 'Everyone 10+', 'Mature 17+', 'Teen' ] } ]} />
-			</Chart>
-		</Paper>
-	);
-	// }
+					<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
+					<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
+					<BarSeries name="Teen" valueField="Teen" argumentField="year" />
+			
+					<Animation />
+					<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
+					<Title text="Demographic Trend of applications over the years" />
+					<Stack stacks={[ { series: [ "Everyone 10+", "Mature 17+", "Teen" ] } ]} />
+				</Chart>
+			</Paper>
+		);
+	
 }

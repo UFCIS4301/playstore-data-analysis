@@ -9,7 +9,7 @@ import Page from '../components/Page';
 
 // ----------------------------------------------------------------------
 const queries = [
-  { title: 'Size vs Number', url: '/overall' },
+  { title: 'Size vs Number', url: '/size-vs-app' },
   { title: 'Min. Android Version', url: '/appversion' },
   { title: 'Demographic', url: '/demographic' },
   { title: 'Paid Vs Free', url: '/appversion' },

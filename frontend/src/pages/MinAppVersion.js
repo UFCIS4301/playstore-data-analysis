@@ -3,7 +3,6 @@ import Paper from '@mui/material/Paper';
 import { Chart, ArgumentAxis, ValueAxis, BarSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { Stack, Animation } from '@devexpress/dx-react-chart';
 
-import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { appVersData as appversdata } from '../demo-data/app-vers';
 
 const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', flexDirection: 'row' }} />;
@@ -78,21 +77,12 @@ const combinedVersdata = [
 ];
 console.log(combinedVersdata);
 
-export default class Demo extends React.PureComponent {
-	constructor(props) {
-		super(props);
+export default function MinAppVersion() {
 
-		this.state = {
-			combinedVersdata
-		};
-	}
-
-	render() {
-		const { combinedVersdata: chartData } = this.state;
 
 		return (
 			<Paper>
-				<Chart rotated data={this.state.combinedVersdata}>
+				<Chart rotated data={combinedVersdata}>
 					<ArgumentAxis />
 					<ValueAxis />
 
@@ -157,5 +147,5 @@ export default class Demo extends React.PureComponent {
 				</Chart>
 			</Paper>
 		);
-	}
+
 }
