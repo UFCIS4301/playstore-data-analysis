@@ -6,12 +6,9 @@ import { Stack, Animation } from '@devexpress/dx-react-chart';
 import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { appVersData as appversdata } from '../demo-data/app-vers';
 
-const Root = (props) => (
-	<Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', justifyContent: 'center', flexDirection: 'row' }} />
-);
+const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />;
 const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
 
-const m2009 = new Map();
 const m2010 = new Map();
 const m2011 = new Map();
 const m2012 = new Map();
@@ -62,14 +59,10 @@ appversdata.rows.forEach((row) => {
 	} else if (row.RELEASED_YEAR === 2010) {
 		m2010.set(row.MIN_ANDROID.toString(), row.COUNT);
 		m2010.set('year', '2010');
-	} else if (row.RELEASED_YEAR === 2009) {
-		m2009.set(row.MIN_ANDROID.toString(), row.COUNT);
-		m2009.set('year', '2009');
 	}
 });
 
 const combinedVersdata = [
-	Object.fromEntries(m2009),
 	Object.fromEntries(m2010),
 	Object.fromEntries(m2011),
 	Object.fromEntries(m2012),
@@ -99,37 +92,37 @@ export default class Demo extends React.PureComponent {
 
 		return (
 			<Paper>
-				<Chart data={this.state.combinedVersdata}>
+				<Chart rotated data={this.state.combinedVersdata}>
 					<ArgumentAxis />
 					<ValueAxis />
 
-					<BarSeries name="10" valueField="10" argumentField="year" />
-					<BarSeries name="8" valueField="8" argumentField="year" />
-					<BarSeries name="7.1" valueField="7.1" argumentField="year" />
-					<BarSeries name="7" valueField="7" argumentField="year" />
-					<BarSeries name="6" valueField="6" argumentField="year" />
-					<BarSeries name="5.1" valueField="5.1" argumentField="year" />
-					<BarSeries name="5" valueField="5" argumentField="year" />
-					<BarSeries name="4.4" valueField="4.4" argumentField="year" />
-					<BarSeries name="4.3" valueField="4.3" argumentField="year" />
-					<BarSeries name="4.2" valueField="4.2" argumentField="year" />
-					<BarSeries name="4.1" valueField="4.1" argumentField="year" />
-					<BarSeries name="4" valueField="4" argumentField="year" />
-					<BarSeries name="3.2" valueField="3.2" argumentField="year" />
-					<BarSeries name="3.1" valueField="3.1" argumentField="year" />
-					<BarSeries name="3" valueField="3" argumentField="year" />
-					<BarSeries name="2.3" valueField="2.3" argumentField="year" />
-					<BarSeries name="2.2" valueField="2.2" argumentField="year" />
-					<BarSeries name="2.1" valueField="2.1" argumentField="year" />
-					<BarSeries name="2" valueField="2" argumentField="year" />
-					<BarSeries name="1.6" valueField="1.6" argumentField="year" />
-					<BarSeries name="1.5" valueField="1.5" argumentField="year" />
-					<BarSeries name="1.1" valueField="1.1" argumentField="year" />
 					<BarSeries name="1" valueField="1" argumentField="year" />
-
+					<BarSeries name="1.1" valueField="1.1" argumentField="year" />
+					<BarSeries name="1.5" valueField="1.5" argumentField="year" />
+					<BarSeries name="1.6" valueField="1.6" argumentField="year" />
+					<BarSeries name="2" valueField="2" argumentField="year" />
+					<BarSeries name="2.1" valueField="2.1" argumentField="year" />
+					<BarSeries name="2.2" valueField="2.2" argumentField="year" />
+					<BarSeries name="2.3" valueField="2.3" argumentField="year" />
+					<BarSeries name="3" valueField="3" argumentField="year" />
+					<BarSeries name="3.1" valueField="3.1" argumentField="year" />
+					<BarSeries name="3.2" valueField="3.2" argumentField="year" />
+					<BarSeries name="4" valueField="4" argumentField="year" />
+					<BarSeries name="4.1" valueField="4.1" argumentField="year" />
+					<BarSeries name="4.2" valueField="4.2" argumentField="year" />
+					<BarSeries name="4.3" valueField="4.3" argumentField="year" />
+					<BarSeries name="4.4" valueField="4.4" argumentField="year" />
+					<BarSeries name="5" valueField="5" argumentField="year" />
+					<BarSeries name="5.1" valueField="5.1" argumentField="year" />
+					<BarSeries name="6" valueField="6" argumentField="year" />
+					<BarSeries name="7" valueField="7" argumentField="year" />
+					<BarSeries name="7.1" valueField="7.1" argumentField="year" />
+					<BarSeries name="8" valueField="8" argumentField="year" />
+					<BarSeries name="10" valueField="10" argumentField="year" />
 					<Animation />
+
 					<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-					<Title text="Yearwise minimum android version app support" />
+					<Title text="Year wise minimum android version app support" />
 					<Stack
 						stacks={[
 							{
