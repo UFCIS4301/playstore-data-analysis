@@ -17,6 +17,7 @@ import useSWR from 'swr';
 
 import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { avgSizeData as avgsizedata } from '../demo-data/avg-size';
+import { sizeVsLaunchesData as sizevslaunchesdata } from '../demo-data/size-vs-launches';
 import AppLaunch from './AppLaunches';
 
 const PREFIX = 'Demo';
@@ -180,7 +181,7 @@ export default function SizeVsApp() {
           labelComponent={Label}
         />
         <Title
-          text="Energy Consumption in 2004\n(Millions of Tons, Oil Equivalent)"
+          text="Average Application Sizes over the Years"
           textComponent={Text}
         />
         <Animation />
