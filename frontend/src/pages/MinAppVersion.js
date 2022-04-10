@@ -6,7 +6,7 @@ import { Stack, Animation } from '@devexpress/dx-react-chart';
 import { energyConsumption as data } from '../demo-data/data-vizualization';
 import { appVersData as appversdata } from '../demo-data/app-vers';
 
-const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />;
+const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', flexDirection: 'row' }} />;
 const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
 
 const m2010 = new Map();

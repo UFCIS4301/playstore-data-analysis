@@ -42,14 +42,14 @@ import useSWR from 'swr';
 // }));
 
 // export default function Demographic() {
-	// const { data, error } = useSWR('/api/demographic');
-	// const [ numAppData, setNumAppData ] = React.useState([]);
-	// console.log(data, numAppData.length);
-	// if (data && numAppData.length !== 0) {
-	// 	setNumAppData(
-	// 		data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
-	// 	);
-	// }
+// const { data, error } = useSWR('/api/demographic');
+// const [ numAppData, setNumAppData ] = React.useState([]);
+// console.log(data, numAppData.length);
+// if (data && numAppData.length !== 0) {
+// 	setNumAppData(
+// 		data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
+// 	);
+// }
 
 // 	return (
 // 		<div className="main">
@@ -97,8 +97,6 @@ import useSWR from 'swr';
 // 	);
 // }
 
-
-
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import { Chart, ArgumentAxis, ValueAxis, BarSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
@@ -112,13 +110,11 @@ const Root = (props) => (
 );
 const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
 
-
 // if (data && numAppData.length !== 0) {
 // 	setNumAppData(
 // 		data.rows.filter((row) => row[2] === 'Everyone 10+').map((row) => ({ year: row[1], num: row[0] }))
 // 	);
 // }
-
 
 const m2009 = new Map();
 const m2010 = new Map();
@@ -171,13 +167,12 @@ demographicdata.rows.forEach((row) => {
 	} else if (row.RELEASED_YEAR === 2010) {
 		m2010.set(row.RATING, row.COUNT);
 		m2010.set('year', '2010');
-	}else if (row.RELEASED_YEAR === 2009) {
+	} else if (row.RELEASED_YEAR === 2009) {
 		m2010.set(row.RATING, row.COUNT);
 		m2010.set('year', '2009');
-	} 
+	}
 });
 
-console.log(m2021);
 const combinedVersdata = [
 	Object.fromEntries(m2009),
 	Object.fromEntries(m2010),
@@ -194,18 +189,19 @@ const combinedVersdata = [
 	Object.fromEntries(m2021)
 ];
 // function f(){
+// const { dataApi, error } = useSWR('/api/demographic');
+// const [ numAppData, setNumAppData ] = React.useState([]);
+// console.log(dataApi, numAppData.length);
+// }
+
+export default function Demographic() {
 	// const { dataApi, error } = useSWR('/api/demographic');
 	// const [ numAppData, setNumAppData ] = React.useState([]);
 	// console.log(dataApi, numAppData.length);
-// }
 
+	const response = fetch('http://localhost:5000/api/demographic');
+	console.log(response);
 
-export default function Demographic() {
-
-	const { dataApi, error } = useSWR('/api/demographic');
-	const [ numAppData, setNumAppData ] = React.useState([]);
-	console.log(dataApi, numAppData.length);
-	
 	// constructor(props) {
 	// 	super(props);
 
@@ -215,20 +211,20 @@ export default function Demographic() {
 	// }
 
 	// render() {
-		// const { combinedVersdata: chartData } = this.state;
+	// const { combinedVersdata: chartData } = this.state;
 
-		// f();
-		
-		return (
-			<Paper>
-				<Chart data={combinedVersdata}>
-					<ArgumentAxis />
-					<ValueAxis />
+	// f();
 
-					<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
-					<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
-					<BarSeries name="Teen" valueField="Teen" argumentField="year" />
-					{/* <BarSeries
+	return (
+		<Paper>
+			<Chart data={combinedVersdata}>
+				<ArgumentAxis />
+				<ValueAxis />
+
+				<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
+				<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
+				<BarSeries name="Teen" valueField="Teen" argumentField="year" />
+				{/* <BarSeries
             name="Coal"
             valueField="coal"
             argumentField="country"
@@ -238,12 +234,12 @@ export default function Demographic() {
             valueField="nuclear"
             argumentField="country"
           /> */}
-					<Animation />
-					<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-					<Title text="Demographic Trend of applications over the years" />
-					<Stack stacks={[ { series: [ "Everyone 10+", "Mature 17+", "Teen" ] } ]} />
-				</Chart>
-			</Paper>
-		);
+				<Animation />
+				<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
+				<Title text="Demographic Trend of applications over the years" />
+				<Stack stacks={[ { series: [ 'Everyone 10+', 'Mature 17+', 'Teen' ] } ]} />
+			</Chart>
+		</Paper>
+	);
 	// }
 }

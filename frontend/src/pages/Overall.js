@@ -26,6 +26,34 @@ const data1 = [
 
 const PREFIX = 'Demo';
 
+const m2010 = new Map();
+const m2011 = new Map();
+const m2012 = new Map();
+const m2013 = new Map();
+const m2014 = new Map();
+const m2015 = new Map();
+const m2016 = new Map();
+const m2017 = new Map();
+const m2018 = new Map();
+const m2019 = new Map();
+const m2020 = new Map();
+const m2021 = new Map();
+
+const combinedVersdata = [
+	Object.fromEntries(m2010),
+	Object.fromEntries(m2011),
+	Object.fromEntries(m2012),
+	Object.fromEntries(m2013),
+	Object.fromEntries(m2014),
+	Object.fromEntries(m2015),
+	Object.fromEntries(m2016),
+	Object.fromEntries(m2017),
+	Object.fromEntries(m2018),
+	Object.fromEntries(m2019),
+	Object.fromEntries(m2020),
+	Object.fromEntries(m2021)
+];
+
 const classes = {
 	chart: `${PREFIX}-chart`
 };
