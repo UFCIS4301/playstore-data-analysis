@@ -99,7 +99,7 @@ app.get('/api/avgappsize', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			"SELECT ROUND(AVG(Appsize)), Released_Year, Domain.Category FROM \"SINHA.KSHITIJ\".Appdetails, \"SINHA.KSHITIJ\".Dates, \"SINHA.KSHITIJ\".Applications, \"SINHA.KSHITIJ\".Domain Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.DomainID = Domain.Domain_ID and Category IN ('Action', 'Entertainment', 'Social', 'Shopping', 'Productivity') Group BY Released_Year, Domain.Category Order by Released_YEar desc",
+			"SELECT ROUND(AVG(Appsize)) AS AVGSIZE, Released_Year, Domain.Category FROM \"SINHA.KSHITIJ\".Appdetails, \"SINHA.KSHITIJ\".Dates, \"SINHA.KSHITIJ\".Applications, \"SINHA.KSHITIJ\".Domain Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Applications.DomainID = Domain.Domain_ID and Category IN ('Action', 'Entertainment', 'Social', 'Shopping', 'Productivity') Group BY Released_Year, Domain.Category Order by Released_YEar desc",
 			//'select * from "SINHA.KSHITIJ".applications',
 			{},
 			{
