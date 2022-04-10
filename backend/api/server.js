@@ -152,7 +152,7 @@ app.get('/api/avgprice', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT COUNT(AppID) COUNT, ROUND(AVG(Price)), Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\' Group BY Released_Year Order by Released_YEar desc',
+			'SELECT COUNT(AppID) COUNT, ROUND(AVG(Price)) as price, Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\' Group BY Released_Year Order by Released_YEar desc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
