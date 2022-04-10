@@ -178,7 +178,7 @@ app.get('/api/paidratio', async function(req, res) {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT ROUND((t1.Paid/t2.Free)*100) as Ratio, Released_Year FROM 			(SELECT Count(AppId) as Paid, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\'			Group BY Released_Year) t1			NATURAL JOIN			(SELECT Count(AppId) as Free, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'Yes\'			Group BY Released_Year) t2			ORDER By Released_Year DEsc',
+			'SELECT t1.Paid,t2.Free, Released_Year FROM 					(SELECT Count(AppId) as Paid, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\'			Group BY Released_Year) t1			NATURAL JOIN			(SELECT Count(AppId) as Free, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'Yes\'			Group BY Released_Year) t2			ORDER By Released_Year DEsc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
