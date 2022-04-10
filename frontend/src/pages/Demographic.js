@@ -94,7 +94,7 @@ export default function Demographic() {
 		setDemoData(combinedVersdata);
 	}
 	return (
-		<div className="demographic">
+		<div className="parentdiv">
 			<div className="dyk">
 				<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 4 }}>
 					<CardContent>
