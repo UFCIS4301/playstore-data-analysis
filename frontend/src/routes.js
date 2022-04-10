@@ -8,7 +8,6 @@ import Demographic from './pages/Demographic';
 import SizeVsApp from './pages/SizeVsApp';
 import Home from './pages/Home';
 //
-import Login from './pages/Login';
 import MinAppVersion from './pages/MinAppVersion';
 import Overall from './pages/Overall';
 import NotFound from './pages/Page404';
@@ -37,7 +36,6 @@ export default function Router() {
         { path: 'demographic', element: <Demographic /> },
         { path: 'appversion', element: <MinAppVersion /> },
         { path: 'size-vs-app', element: <SizeVsApp /> },
-        { path: 'login', element: <Login /> },
         // { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> }
