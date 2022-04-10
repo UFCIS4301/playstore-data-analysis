@@ -1,3 +1,25 @@
+.demographic{
+  margin: auto;
+  text-align: center;
+  display: table;
+  margin: 0 auto;
+
+}
+.dyk{
+  display: table;
+  margin: 0 auto;
+  padding: 30px;
+  width: 1200px;
+
+}
+.trendanalysis{
+  display: table;
+  margin: 0 auto;
+  padding: 10px;
+  width: 1200px;
+
+}
+
 .main {
   border: black;
   display: flex;

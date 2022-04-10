@@ -94,40 +94,46 @@ export default function Demographic() {
 		setDemoData(combinedVersdata);
 	}
 	return (
-		<Card sx={{ maxWidth: '80%' }}>
-			{/* <CardMedia
-        component="img"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
-
-			<Paper>
-				<Chart data={demoData}>
-					<ArgumentAxis />
-					<ValueAxis />
-					<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
-					<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
-					<BarSeries name="Teen" valueField="Teen" argumentField="year" />
-					<Animation />
-					<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-					<Title text="Demographic Trend of applications over the years" />
-					<Stack stacks={[ { series: [ 'Everyone 10+', 'Mature 17+', 'Teen' ] } ]} />
-				</Chart>
-			</Paper>
-		</Card>
+		<div className="demographic">
+			<div className="dyk">
+				<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 4 }}>
+					<CardContent>
+						<Typography gutterBottom variant="h5" component="div">
+							Do You Know?
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Globally, there are more than 1 billion Google play users.
+						</Typography>
+					</CardContent>
+				</Card>
+			</div>
+			<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
+				<Paper>
+					<Chart data={demoData}>
+						<ArgumentAxis />
+						<ValueAxis />
+						<BarSeries name="Everyone 10+" valueField="Everyone 10+" argumentField="year" />
+						<BarSeries name="Mature 17+" valueField="Mature 17+" argumentField="year" />
+						<BarSeries name="Teen" valueField="Teen" argumentField="year" />
+						<Animation />
+						<Legend position="bottom" rootComponent={Root} labelComponent={Label} />
+						<Title text="Demographic Trend of applications over the years" />
+						<Stack stacks={[ { series: [ 'Everyone 10+', 'Mature 17+', 'Teen' ] } ]} />
+					</Chart>
+				</Paper>
+			</Card>
+			<div className="trendanalysis">
+				<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
+					<CardContent>
+						<Typography gutterBottom variant="h5" component="div">
+							Trend Analysis
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Globally, there are more than 1 billion Google play users.
+						</Typography>
+					</CardContent>
+				</Card>
+			</div>
+		</div>
 	);
 }
