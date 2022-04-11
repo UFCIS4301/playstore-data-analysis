@@ -11,10 +11,14 @@ import {
 	Legend
 } from '@devexpress/dx-react-chart-material-ui';
 import { ValueScale, Stack, Animation } from '@devexpress/dx-react-chart';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 import { categoryData as categorydata } from '../demo-data/category';
-
-
 
 const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />;
 const LabelA = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
@@ -153,119 +157,152 @@ const Label = (symbol) => (props) => {
 	return <ValueAxis.Label {...props} text={text + symbol} />;
 };
 
-
 const modifyCatCountDomain = (domain) => [ domain[0], 75000 ];
 const modifyTotalDomain = () => [ 0, 750000 ];
 console.log(combinedVersdata);
 export default function Category() {
 	return (
-		<Paper>
-			<Chart data={combinedVersdata}>
-				<ValueScale name="Total" modifyDomain={modifyTotalDomain} />
-				<ValueScale name="Category Count" modifyDomain={modifyCatCountDomain} />
+		<div className="parentdiv">
+			<div className="dyk">
+				<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 4 }}>
+					<CardContent>
+						<Typography gutterBottom variant="h5" component="div">
+							Do You Know?
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Globally, there are more than 1 billion Google play users.
+						</Typography>
+					</CardContent>
+				</Card>
+			</div>
+			<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
+				<Paper>
+					<Chart data={combinedVersdata}>
+						<ValueScale name="Total" modifyDomain={modifyTotalDomain} />
+						<ValueScale name="Category Count" modifyDomain={modifyCatCountDomain} />
 
-				<ArgumentAxis />
-				<ValueAxis scaleName="Category Count" />
-				<ValueAxis scaleName="Total" position="right"  />
+						<ArgumentAxis />
+						<ValueAxis scaleName="Category Count" />
+						<ValueAxis scaleName="Total" position="right" />
 
-				<BarSeries
-					name="Education"
-					valueField="Education"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Entertainment"
-					valueField="Entertainment"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Casual"
-					valueField="Casual"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Business"
-					valueField="Business"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
+						<BarSeries
+							name="Education"
+							valueField="Education"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Entertainment"
+							valueField="Entertainment"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Casual"
+							valueField="Casual"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Business"
+							valueField="Business"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
 
-<BarSeries
-					name="Productivity"
-					valueField="Productivity"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Music and Audio"
-					valueField="Music and Audio"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                 <BarSeries
-					name="Tools"
-					valueField="Tools"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-        
-                 <BarSeries
-					name="Arcade"
-					valueField="Arcade"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Lifestyle"
-					valueField="Lifestyle"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                 <BarSeries
-					name="Puzzle"
-					valueField="Puzzle"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Books and Reference"
-					valueField="Books and Reference"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-                <BarSeries
-					name="Personalization"
-					valueField="Personalization"
-					argumentField="year"
-					// color='orange'
-					scaleName="Category Count"
-				/>
-				<LineSeries name="Total" valueField="Total" argumentField="year" scaleName="Total" color='violet' />
+						<BarSeries
+							name="Productivity"
+							valueField="Productivity"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Music and Audio"
+							valueField="Music and Audio"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Tools"
+							valueField="Tools"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
 
-				{/* <Animation /> */}
-				{/* <Stack
+						<BarSeries
+							name="Arcade"
+							valueField="Arcade"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Lifestyle"
+							valueField="Lifestyle"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Puzzle"
+							valueField="Puzzle"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Books and Reference"
+							valueField="Books and Reference"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<BarSeries
+							name="Personalization"
+							valueField="Personalization"
+							argumentField="year"
+							// color='orange'
+							scaleName="Category Count"
+						/>
+						<LineSeries
+							name="Total"
+							valueField="Total"
+							argumentField="year"
+							scaleName="Total"
+							color="violet"
+						/>
+
+						{/* <Animation /> */}
+						{/* <Stack
             stacks={[
               { series: ['Paid', 'Price'] },
             ]}
           /> */}
-				<Legend position="bottom" rootComponent={Root} labelComponent={LabelA} itemComponent={Item} />
-				<Title text="Paid Application Launches and Avg Price over the years" />
-                <Stack/>
-			</Chart>
-		</Paper>
+						<Legend position="bottom" rootComponent={Root} labelComponent={LabelA} itemComponent={Item} />
+						<Title text="Paid Application Launches and Avg Price over the years" />
+						<Stack />
+					</Chart>
+				</Paper>
+			</Card>
+			<div className="trendanalysis">
+				<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
+					<CardContent>
+						<Typography gutterBottom variant="h5" component="div">
+							Trend Analysis
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Globally, there are more than 1 billion Google play users.
+						</Typography>
+					</CardContent>
+				</Card>
+			</div>
+		</div>
 	);
 }
