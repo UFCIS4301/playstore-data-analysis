@@ -30,7 +30,7 @@ export default function Home() {
     <RootStyle title="Home">
       <Container align="center">
         <MotionContainer initial="initial" open>
-          <Box sx={{  margin: 'auto', textAlign: 'center'  }}>
+          <Box sx={{ margin: 'auto', textAlign: 'center' }}>
             <motion.div variants={varBounceIn}>
               <Typography variant="h1" paragraph>
                 Google PlayStore Trend Analysis
@@ -39,15 +39,24 @@ export default function Home() {
             <Typography sx={{ color: 'text.secondary' }}>
               Query below on data for Google Play Store
             </Typography>
-            <div className="queries" style={{ gap: '15px', display: 'flex', marginTop: '60px',transform:'translate(-50%,-50%)',marginLeft:'43%'}}>
+            <div
+              className="queries"
+              style={{
+                gap: '15px',
+                display: 'flex',
+                marginTop: '60px',
+                transform: 'translate(-50%,-50%)',
+                marginLeft: '43%'
+              }}
+            >
               {queries.map((query, index) => (
                 <Button
                   to={query.url}
-                  size='large'
+                  size="large"
                   variant="contained"
                   component={RouterLink}
                   key={index}
-                  style={{minWidth: '137px'}}
+                  style={{ minWidth: '137px' }}
                 >
                   {query.title}
                 </Button>

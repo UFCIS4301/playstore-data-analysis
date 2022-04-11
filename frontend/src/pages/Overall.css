@@ -1,23 +1,20 @@
-.parentdiv{
+.parentdiv {
   margin: auto;
   text-align: center;
   display: table;
   margin: 0 auto;
-
 }
-.dyk{
+.dyk {
   display: table;
   margin: 0 auto;
   padding: 30px;
   width: 1200px;
-
 }
-.trendanalysis{
+.trendanalysis {
   display: table;
   margin: 0 auto;
   padding: 10px;
   width: 1200px;
-
 }
 
 .main {
