@@ -140,7 +140,7 @@ export default function PaidVsFree() {
           
           <Animation />
           <Legend position="bottom" rootComponent={Root} labelComponent={Label} itemComponent={Item} />
-          <Title text="Average Price of Applications over the Years" />
+          <Title text="Paid Vs Free Applications launched over the years" />
 
         </Chart>
       </Paper>
