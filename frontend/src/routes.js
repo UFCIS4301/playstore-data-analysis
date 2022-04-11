@@ -14,6 +14,7 @@ import NotFound from './pages/Page404';
 import Products from './pages/Products';
 import Register from './pages/Register';
 import User from './pages/User';
+import AvgPrice from './pages/AvgPrice';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -36,6 +37,8 @@ export default function Router() {
         { path: 'demographic', element: <Demographic /> },
         { path: 'appversion', element: <MinAppVersion /> },
         { path: 'size-vs-app', element: <SizeVsApp /> },
+        { path: 'paid-vs-free', element: <AvgPrice /> },
+
         // { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> }
