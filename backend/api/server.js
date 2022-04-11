@@ -145,32 +145,6 @@ app.get('/api/totalappcount', async function(req, res) {
 	}
 });
 
-app.get('/api/avgprice', async function(req, res) {
-	//res.send({ express: 'Hello From Express' });
-	let conn;
-	try {
-		conn = await oracledb.getConnection(config);
-
-		const result = await conn.execute(
-			'SELECT COUNT(AppID) COUNT, ROUND(AVG(Price)) as price, Released_Year FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\' Group BY Released_Year Order by Released_YEar desc',
-			{},
-			{
-				outFormat: oracledb.OBJECT
-			}
-		);
-
-		res.send(JSON.stringify(result));
-		//console.log(result);
-	} catch (err) {
-		console.log('Ouch!', err);
-	} finally {
-		if (conn) {
-			// conn assignment worked, need to close
-			await conn.close();
-		}
-	}
-});
-
 app.get('/api/paidvsfreeandprice', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
