@@ -13,8 +13,8 @@ import {
 import { ValueScale, Stack, Animation } from '@devexpress/dx-react-chart';
 
 import { categoryData as categorydata } from '../demo-data/category';
-import { lightFormat } from 'date-fns';
-import { lt } from 'lodash';
+
+
 
 const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />;
 const LabelA = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
@@ -34,7 +34,7 @@ const m2019 = new Map();
 const m2020 = new Map();
 const m2021 = new Map();
 
-lt = [ m2009, m2010, m2011, m2012, m2013, m2014, m2015, m2016, m2017, m2018, m2019, m2020, m2021 ];
+const list = [ m2009, m2010, m2011, m2012, m2013, m2014, m2015, m2016, m2017, m2018, m2019, m2020, m2021 ];
 // Education
 // Entertainment
 // Casual
@@ -47,7 +47,7 @@ lt = [ m2009, m2010, m2011, m2012, m2013, m2014, m2015, m2016, m2017, m2018, m20
 // Puzzle
 // Books and Reference
 // Personalization
-lt.forEach((e) => {
+list.forEach((e) => {
 	e.set('Education', 0);
 	e.set('Entertainment', 0);
 	e.set('Casual', 0);
@@ -65,68 +65,68 @@ lt.forEach((e) => {
 categorydata.rows.forEach((row) => {
 	if (row.RELEASED_YEAR === 2021) {
 		m2021.set('Category', row.CATEGORY);
-		m2021.set('Category Count', row.CATEGORY_COUNT);
+		m2021.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2021.set('Total', row.TOTAL_APPLICATION);
 		m2021.set('Rank', row.RANK);
 		m2021.set('year', '2021');
 	} else if (row.RELEASED_YEAR === 2020) {
 		m2020.set('Category', row.CATEGORY);
-		m2020.set('Category Count', row.CATEGORY_COUNT);
+		m2020.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2020.set('Total', row.TOTAL_APPLICATION);
 		m2020.set('year', '2020');
 	} else if (row.RELEASED_YEAR === 2019) {
 		m2019.set('Category', row.CATEGORY);
-		m2019.set('Category Count', row.CATEGORY_COUNT);
+		m2019.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2019.set('Total', row.TOTAL_APPLICATION);
 		m2019.set('year', '2019');
 	} else if (row.RELEASED_YEAR === 2018) {
 		m2018.set('Category', row.CATEGORY);
-		m2018.set('Category Count', row.CATEGORY_COUNT);
+		m2018.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2018.set('Total', row.TOTAL_APPLICATION);
 		m2018.set('year', '2018');
 	} else if (row.RELEASED_YEAR === 2017) {
 		m2017.set('Category', row.CATEGORY);
-		m2017.set('Category Count', row.CATEGORY_COUNT);
+		m2017.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2017.set('Total', row.TOTAL_APPLICATION);
 		m2017.set('year', '2017');
 	} else if (row.RELEASED_YEAR === 2016) {
 		m2016.set('Category', row.CATEGORY);
-		m2016.set('Category Count', row.CATEGORY_COUNT);
+		m2016.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2016.set('Total', row.TOTAL_APPLICATION);
 		m2016.set('year', '2016');
 	} else if (row.RELEASED_YEAR === 2015) {
 		m2015.set('Category', row.CATEGORY);
-		m2015.set('Category Count', row.CATEGORY_COUNT);
+		m2015.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2015.set('Total', row.TOTAL_APPLICATION);
 		m2015.set('year', '2015');
 	} else if (row.RELEASED_YEAR === 2014) {
 		m2014.set('Category', row.CATEGORY);
-		m2014.set('Category Count', row.CATEGORY_COUNT);
+		m2014.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2014.set('Total', row.TOTAL_APPLICATION);
 		m2014.set('year', '2014');
 	} else if (row.RELEASED_YEAR === 2013) {
 		m2013.set('Category', row.CATEGORY);
-		m2013.set('Category Count', row.CATEGORY_COUNT);
+		m2013.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2013.set('Total', row.TOTAL_APPLICATION);
 		m2013.set('year', '2013');
 	} else if (row.RELEASED_YEAR === 2012) {
 		m2012.set('Category', row.CATEGORY);
-		m2012.set('Category Count', row.CATEGORY_COUNT);
+		m2012.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2012.set('Total', row.TOTAL_APPLICATION);
 		m2012.set('year', '2012');
 	} else if (row.RELEASED_YEAR === 2011) {
 		m2011.set('Category', row.CATEGORY);
-		m2011.set('Category Count', row.CATEGORY_COUNT);
+		m2011.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2011.set('Total', row.TOTAL_APPLICATION);
 		m2011.set('year', '2011');
 	} else if (row.RELEASED_YEAR === 2010) {
 		m2010.set('Category', row.CATEGORY);
-		m2010.set('Category Count', row.CATEGORY_COUNT);
+		m2010.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2010.set('Total', row.TOTAL_APPLICATION);
 		m2010.set('year', '2010');
 	} else if (row.RELEASED_YEAR === 2009) {
 		m2009.set('Category', row.CATEGORY);
-		m2009.set('Category Count', row.CATEGORY_COUNT);
+		m2009.set(row.CATEGORY, row.CATEGORY_COUNT);
 		m2009.set('Total', row.TOTAL_APPLICATION);
 		m2009.set('year', '2009');
 	}
@@ -153,11 +153,11 @@ const Label = (symbol) => (props) => {
 	return <ValueAxis.Label {...props} text={text + symbol} />;
 };
 
-const PriceLabel = Label(' $');
-const modifyCatCountDomain = (domain) => [ domain[0], 100000 ];
-const modifyTotalDomain = () => [ 0, 10000000 ];
+
+const modifyCatCountDomain = (domain) => [ domain[0], 75000 ];
+const modifyTotalDomain = () => [ 0, 750000 ];
 console.log(combinedVersdata);
-export default function PaidApps() {
+export default function Category() {
 	return (
 		<Paper>
 			<Chart data={combinedVersdata}>
@@ -166,16 +166,95 @@ export default function PaidApps() {
 
 				<ArgumentAxis />
 				<ValueAxis scaleName="Category Count" />
-				<ValueAxis scaleName="Total" position="right" labelComponent={PriceLabel} />
+				<ValueAxis scaleName="Total" position="right"  />
 
 				<BarSeries
-					name="Category Count"
-					valueField="Category Count"
+					name="Education"
+					valueField="Education"
 					argumentField="year"
 					// color='orange'
 					scaleName="Category Count"
 				/>
-				<LineSeries name="Total" valueField="Total" argumentField="year" scaleName="Total" />
+                <BarSeries
+					name="Entertainment"
+					valueField="Entertainment"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Casual"
+					valueField="Casual"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Business"
+					valueField="Business"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+
+<BarSeries
+					name="Productivity"
+					valueField="Productivity"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Music and Audio"
+					valueField="Music and Audio"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                 <BarSeries
+					name="Tools"
+					valueField="Tools"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+        
+                 <BarSeries
+					name="Arcade"
+					valueField="Arcade"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Lifestyle"
+					valueField="Lifestyle"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                 <BarSeries
+					name="Puzzle"
+					valueField="Puzzle"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Books and Reference"
+					valueField="Books and Reference"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+                <BarSeries
+					name="Personalization"
+					valueField="Personalization"
+					argumentField="year"
+					// color='orange'
+					scaleName="Category Count"
+				/>
+				<LineSeries name="Total" valueField="Total" argumentField="year" scaleName="Total" color='violet' />
 
 				{/* <Animation /> */}
 				{/* <Stack
@@ -185,6 +264,7 @@ export default function PaidApps() {
           /> */}
 				<Legend position="bottom" rootComponent={Root} labelComponent={LabelA} itemComponent={Item} />
 				<Title text="Paid Application Launches and Avg Price over the years" />
+                <Stack/>
 			</Chart>
 		</Paper>
 	);

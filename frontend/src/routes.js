@@ -15,6 +15,7 @@ import Products from './pages/Products';
 import Register from './pages/Register';
 import User from './pages/User';
 import AvgPrice from './pages/AvgPrice';
+import Category from './pages/Category';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -38,7 +39,7 @@ export default function Router() {
         { path: 'appversion', element: <MinAppVersion /> },
         { path: 'size-vs-app', element: <SizeVsApp /> },
         { path: 'paid-vs-free', element: <AvgPrice /> },
-
+        { path: 'category', element: <Category /> },
         // { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> }

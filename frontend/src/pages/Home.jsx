@@ -13,7 +13,7 @@ const queries = [
   { title: 'Min. Android Version', url: '/appversion' },
   { title: 'Demographic', url: '/demographic' },
   { title: 'Paid Vs Free', url: '/paid-vs-free' },
-  { title: 'Category Wise', url: '/price' }
+  { title: 'Category Wise', url: '/category' }
 ];
 const RootStyle = styled(Page)(({ theme }) => ({
   display: 'flex',
