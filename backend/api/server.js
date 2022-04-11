@@ -171,14 +171,14 @@ app.get('/api/avgprice', async function(req, res) {
 	}
 });
 
-app.get('/api/paidvsfree', async function(req, res) {
+app.get('/api/paidvsfreeandprice', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
 	try {
 		conn = await oracledb.getConnection(config);
 
 		const result = await conn.execute(
-			'SELECT t1.Paid,t2.Free, Released_Year FROM 					(SELECT Count(AppId) as Paid, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\'			Group BY Released_Year) t1			NATURAL JOIN			(SELECT Count(AppId) as Free, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'Yes\'			Group BY Released_Year) t2			ORDER By Released_Year DEsc',
+			'SELECT t1.Paid,t2.Free, t1.Price as price, Released_Year FROM 						(SELECT Count(AppId) as Paid,ROUND(AVG(Price)) as price, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'No\'			Group BY Released_Year) t1			NATURAL JOIN			(SELECT Count(AppId) as Free, Released_YEar			FROM "SINHA.KSHITIJ".Appdetails, "SINHA.KSHITIJ".Dates, "SINHA.KSHITIJ".Applications			Where Applications.AppID = Appdetails.ID and Applications.AppID = Dates.ID and Free=\'Yes\'			Group BY Released_Year) t2			ORDER By Released_Year DEsc',
 			{},
 			{
 				outFormat: oracledb.OBJECT
