@@ -171,7 +171,7 @@ app.get('/api/avgprice', async function(req, res) {
 	}
 });
 
-app.get('/api/paidratio', async function(req, res) {
+app.get('/api/paidvsfree', async function(req, res) {
 	//res.send({ express: 'Hello From Express' });
 	let conn;
 	try {
