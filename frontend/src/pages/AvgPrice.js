@@ -109,7 +109,7 @@ export default function AvgPrice() {
 			</div>
 			<Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
 				<Paper>
-					<Chart data={combinedVersdata}>
+					{/* <Chart data={combinedVersdata}>
 						<ArgumentAxis />
 						<ValueAxis max={8000000} showLabels />
 
@@ -118,8 +118,8 @@ export default function AvgPrice() {
 						<Animation />
 						<Legend position="bottom" rootComponent={Root} labelComponent={Label} itemComponent={Item} />
 						<Title text="Average Price of Applications over the Years" />
-					</Chart>
-					<PaidApps />
+					</Chart> */}
+					 <PaidApps />
 					<PaidVsFree />
 				</Paper>
 			</Card>
