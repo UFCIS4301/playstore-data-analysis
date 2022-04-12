@@ -1,6 +1,11 @@
-import { Stack, ValueScale } from '@devexpress/dx-react-chart';
+import { EventTracker, Stack, ValueScale } from '@devexpress/dx-react-chart';
 import {
-  ArgumentAxis, BarSeries, Chart, Legend, LineSeries, Title, ValueAxis
+  ArgumentAxis,
+  BarSeries,
+  Chart,
+  Legend,
+  LineSeries,
+  Title, Tooltip, ValueAxis
 } from '@devexpress/dx-react-chart-material-ui';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,7 +13,6 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import useSWR from 'swr';
-
 
 const Root = (props) => (
   <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />
@@ -66,10 +70,9 @@ const Label = (symbol) => (props) => {
 const modifyCatCountDomain = (domain) => [domain[0], 75000];
 const modifyTotalDomain = () => [0, 750000];
 export default function Category() {
-  const [data, setData] = React.useState([]);
-  const { categoryData, setCategoryData } = useSWR('/api/category');
-  if (categoryData && data.length === 0) { 
-    console.log(categoryData)
+  const [categoryData, setCateData] = React.useState([]);
+  const { data } = useSWR('/api/category');
+  if (data && categoryData.length === 0) {
     list.forEach((e) => {
       e.set('Education', 0);
       e.set('Entertainment', 0);
@@ -84,8 +87,8 @@ export default function Category() {
       e.set('Books and Reference', 0);
       e.set('Personalization', 0);
     });
-    
-    categoryData.rows.forEach((row) => {
+
+    data.rows.forEach((row) => {
       if (row.RELEASED_YEAR === 2021) {
         m2021.set('Category', row.CATEGORY);
         m2021.set(row.CATEGORY, row.CATEGORY_COUNT);
@@ -154,7 +157,7 @@ export default function Category() {
         m2009.set('year', '2009');
       }
     });
-    
+
     const combinedVersdata = [
       //   Object.fromEntries(m2009),
       // Object.fromEntries(m2010),
@@ -170,7 +173,7 @@ export default function Category() {
       Object.fromEntries(m2020),
       Object.fromEntries(m2021)
     ];
-    setCategoryData(combinedVersdata)
+    setCateData(combinedVersdata);
   }
   return (
     <div className="parentdiv">
@@ -304,6 +307,8 @@ export default function Category() {
             />
             <Title text="Paid Application Launches and Avg Price over the years" />
             <Stack />
+            <EventTracker />
+            <Tooltip />
           </Chart>
         </Paper>
       </Card>

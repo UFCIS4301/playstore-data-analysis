@@ -6,9 +6,10 @@ import {
   ValueAxis,
   BarSeries,
   Title,
-  Legend
+  Legend,
+  Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
+import { Stack, Animation, EventTracker } from '@devexpress/dx-react-chart';
 import useSWR from 'swr';
 
 import Card from '@mui/material/Card';
@@ -129,6 +130,8 @@ export default function Demographic() {
             <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
             <Title text="Demographic Trend of applications over the years" />
             <Stack stacks={[{ series: ['Everyone 10+', 'Mature 17+', 'Teen'] }]} />
+            <EventTracker />
+            <Tooltip />
           </Chart>
         </Paper>
       </Card>

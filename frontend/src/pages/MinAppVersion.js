@@ -1,23 +1,19 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import useSWR from 'swr';
+import { Animation, EventTracker, Stack } from '@devexpress/dx-react-chart';
 import {
-  Chart,
   ArgumentAxis,
-  ValueAxis,
   BarSeries,
+  Chart,
+  Legend,
   Title,
-  Legend
+  Tooltip,
+  ValueAxis
 } from '@devexpress/dx-react-chart-material-ui';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-
-import { appVersData as appversdata } from '../demo-data/app-vers';
+import * as React from 'react';
+import useSWR from 'swr';
 
 const Root = (props) => <Legend.Root {...props} sx={{ display: 'flex', flexDirection: 'row' }} />;
 const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} />;
@@ -25,7 +21,6 @@ const Label = (props) => <Legend.Label {...props} sx={{ whiteSpace: 'nowrap' }} 
 export default function MinAppVersion() {
   const { data } = useSWR('/api/appversion');
   const [versionData, setVersionData] = React.useState([]);
-
   if (data && versionData.length === 0) {
     const m2010 = new Map();
     const m2011 = new Map();
@@ -40,7 +35,7 @@ export default function MinAppVersion() {
     const m2020 = new Map();
     const m2021 = new Map();
 
-    appversdata.rows.forEach((row) => {
+    data.rows.forEach((row) => {
       if (row.RELEASED_YEAR === 2021) {
         m2021.set(row.MIN_ANDROID.toString(), row.COUNT);
         m2021.set('year', '2021');
@@ -174,6 +169,8 @@ export default function MinAppVersion() {
                 }
               ]}
             />
+            <EventTracker />
+            <Tooltip />
           </Chart>
         </Paper>
       </Card>

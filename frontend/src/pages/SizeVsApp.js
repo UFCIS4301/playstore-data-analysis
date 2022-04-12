@@ -1,27 +1,17 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
+import { Animation, ArgumentScale, EventTracker} from '@devexpress/dx-react-chart';
 import {
-  Chart,
-  ArgumentAxis,
-  ValueAxis,
-  LineSeries,
-  Title,
-  Legend
+  ArgumentAxis, Chart, Legend, LineSeries,
+  Title, ValueAxis,Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { ArgumentScale, Animation } from '@devexpress/dx-react-chart';
-import { curveCatmullRom, line } from 'd3-shape';
 import { scalePoint } from 'd3-scale';
+import { curveCatmullRom, line } from 'd3-shape';
+import * as React from 'react';
 import useSWR from 'swr';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import { energyConsumption as data } from '../demo-data/data-vizualization';
-import { avgSizeData as avgsizedata } from '../demo-data/avg-size';
-import { sizeVsLaunchesData as sizevslaunchesdata } from '../demo-data/size-vs-launches';
 import AppLaunch from './AppLaunches';
 
 const PREFIX = 'Demo';
@@ -74,10 +64,9 @@ const StyledChart = styled(Chart)(() => ({
 }));
 
 export default function SizeVsApp() {
-  const [data, setData] = React.useState([]);
-  const { sizeData } = useSWR('/api/avgappsizevstotalcount');
-  console.log(sizeData);
-  if (data.length === 0 && sizeData) {
+  const [sizeData, setSizeData] = React.useState([]);
+  const { data } = useSWR('/api/avgappsizevstotalcount');
+  if (sizeData.length === 0 && data) {
     const m2010 = new Map();
     const m2011 = new Map();
     const m2012 = new Map();
@@ -90,8 +79,7 @@ export default function SizeVsApp() {
     const m2019 = new Map();
     const m2020 = new Map();
     const m2021 = new Map();
-
-    sizeData.rows.forEach((row) => {
+    data.rows.forEach((row) => {
       if (row.RELEASED_YEAR === 2021) {
         m2021.set(row.CATEGORY, row.AVGSIZE);
         m2021.set('year', '2021');
@@ -149,7 +137,7 @@ export default function SizeVsApp() {
       Object.fromEntries(m2020),
       Object.fromEntries(m2021)
     ];
-    setData(combinedSizeData);
+    setSizeData(combinedSizeData);
   }
   return (
     <div className="parentdiv">
@@ -167,7 +155,7 @@ export default function SizeVsApp() {
       </div>
       <Card sx={{ maxWidth: '100%', border: 0, boxShadow: 10 }}>
         <Paper>
-          <StyledChart data={data} className={classes.chart}>
+          <StyledChart data={sizeData} className={classes.chart}>
             <ArgumentScale factory={scalePoint} />
             <ArgumentAxis />
             <ValueAxis />
@@ -210,6 +198,8 @@ export default function SizeVsApp() {
             />
             <Title text="Average Application Sizes over the Years" textComponent={Text} />
             <Animation />
+            <EventTracker />
+            <Tooltip />
           </StyledChart>
 
           <AppLaunch />
