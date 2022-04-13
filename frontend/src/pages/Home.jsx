@@ -73,9 +73,13 @@ export default function Home() {
           <br />
 
           {/* api => api/totalappcount */}
-          <Typography sx={{ color: 'text.secondary' }}>
-            There are {demoData} tuples in the database
-          </Typography>
+          <Button
+            onClick={(e) => {
+              e.target.innerText = `There are ${demoData} tuples in the database`;
+            }}
+          >
+            Click here to reveal Number of tuples
+          </Button>
         </MotionContainer>
       </Container>
     </RootStyle>
